@@ -11,11 +11,9 @@ class BillTracker extends React.Component{
         this.addBill = this.addBill.bind(this)
     }
 
-
-    addBill(event){
-        console.log("it works!")
-        const {name, value} = event.target
-        console.log(name + value)
+    addBill = (name, value) =>{
+        alert("it works")
+        alert(name + value)
     }
 
     render(){
@@ -23,7 +21,7 @@ class BillTracker extends React.Component{
             <div>
                 <p>Bill Tracker</p>
 
-                <AddBill submit={this.addBill} /> 
+                <AddBill addBill={this.addBill} /> 
                 
             </div>
         )

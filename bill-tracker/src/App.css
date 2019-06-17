@@ -12,3 +12,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.AddBill{
+  border: solid;
+  border-color: brown;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
