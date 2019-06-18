@@ -1,4 +1,5 @@
 import React from "react"
+import "./styles/AddBill.css"
 
 class AddBill extends React.Component{
     constructor(props){
@@ -21,15 +22,15 @@ class AddBill extends React.Component{
     render(){
         return(
             <div className="AddBill">
-                <p>Add Bill</p>
-                <form onSubmit={()=>this.state.addBill(this.state.billName, this.state.amount)}>
+                <p><b>Add Bill</b></p>
+                <form>
                          
                     <input 
                         name="billName"
                         type="text"
                         value={this.state.billName}
                         onChange={this.handleChange}
-                        placeHolder="Bill Name"
+                        placeholder="Bill Name"
                     />
 
                     <input 
@@ -37,10 +38,10 @@ class AddBill extends React.Component{
                         type="number"
                         value={this.state.amount}
                         onChange={this.handleChange}
-                        placeHolder="Bill amount"
+                        placeholder="Bill amount"
                     />
   
-                    <button>Submit</button>
+                    <div onClick={()=>this.state.addBill(this.state.billName, this.state.amount)} className="AddBillButton">Submit</div>
                 </form>
             </div>
         )
