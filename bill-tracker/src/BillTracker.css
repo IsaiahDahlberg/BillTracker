@@ -12,23 +12,19 @@
 .mainContent{
     background-color: orange;
     grid-row: 3/4;
-    grid-column: 1/4;
-}
-
-.smallBox{
-    background-color: red;
+    grid-column: 1/2;
 }
 
 .smallBox--1{
     background-color: greenyellow;
 }
 
-.smallBox--2{
-    background-color: blueviolet;
+.displayAllBills{
+    grid-row: 2/4;
 }
 
-.smallBox--3{
-    background-color: orangered;
+.BillBreakDown{
+    grid-row: 2/4;
 }
 
 .header{

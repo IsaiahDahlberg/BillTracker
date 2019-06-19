@@ -1,16 +1,20 @@
 import React from "react"
 import AddBill from "./component/AddBill"
 import DisplayAllBills from "./component/DisplayAllBills.js"
+import BillBreakDown from "./component/BillBreakDown"
 import './BillTracker.css'
 
 class BillTracker extends React.Component{
     constructor(){
         super()
         this.state = {
-            bills: []
+            bills: [],
+            focusBill: null
         }
 
         this.addBill = this.addBill.bind(this)
+        this.deleteBill = this.deleteBill.bind(this)
+        this.changeFocus = this.changeFocus.bind(this)
     }
 
     addBill = (name, value) =>{
@@ -24,16 +28,35 @@ class BillTracker extends React.Component{
         })
     }
 
+    deleteBill = (i) =>{
+        this.setState(prevState=>{
+            var newBills =  prevState.bills.filter((bill,index)=>{
+               return index != i
+            })
+            return{
+                bills: newBills,
+                focusBill: null
+            }
+        })
+    }   
+
+    changeFocus = (i) =>{
+        this.setState({
+            focusBill: i
+        })    
+    }
+
+
     render(){
         return(
             <div className="container">
                 <div className="header">Bill Tracker</div>
             
-                <AddBill className="smallBox smallBox--1" addBill={this.addBill} /> 
+                <AddBill addBill={this.addBill} /> 
 
-                <DisplayAllBills className="smallBox smallBox--2" bills={this.state.bills}/>
+                <DisplayAllBills deleteBill={this.deleteBill} bills={this.state.bills} changeFocus={this.changeFocus} focusBill={this.state.focusBill}/>
 
-                <div className="smallBox smallBox--3">smallBox smallBox--3</div>
+                <BillBreakDown bills={this.state.bills} focusBill={this.state.focusBill}/>
 
                 <div className="sidebar">sidebar</div>
 

@@ -12,15 +12,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.AddBill{
-  border: solid;
-  border-color: brown;
-  width: 40%;
-  margin: auto;
-  padding-bottom: 15px;
-}
-
-.AddBillButton{
-  color: #4CAF50;
-}
