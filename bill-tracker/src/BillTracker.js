@@ -15,10 +15,11 @@ class BillTracker extends React.Component{
         this.addBill = this.addBill.bind(this)
         this.deleteBill = this.deleteBill.bind(this)
         this.changeFocus = this.changeFocus.bind(this)
+        this.assignRandomColor = this.assignRandomColor.bind(this)
     }
 
     addBill = (name, value) =>{
-       var bill = {Name:name,Amount:value} 
+       var bill = {Name:name,Amount:value, Color: this.assignRandomColor()} 
         this.setState(prevState=>{
             var arr = prevState.bills
             arr.push(bill)
@@ -31,7 +32,7 @@ class BillTracker extends React.Component{
     deleteBill = (i) =>{
         this.setState(prevState=>{
             var newBills =  prevState.bills.filter((bill,index)=>{
-               return index != i
+               return index !== i
             })
             return{
                 bills: newBills,
@@ -46,6 +47,20 @@ class BillTracker extends React.Component{
         })    
     }
 
+    assignRandomColor(){
+        var color
+        while(true){
+            color = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6) 
+            var av  = parseInt(color.substring(1,3),16) + parseInt(color.substring(3,5),16) + parseInt(color.substring(5),16) 
+            var isDark = av < 381 ? true : false
+            if(!isDark){
+                break;
+            }              
+        }
+        return (
+           color
+        )      
+    }
 
     render(){
         return(

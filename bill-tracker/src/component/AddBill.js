@@ -10,6 +10,7 @@ class AddBill extends React.Component{
             amount: ""
         }
         this.handleChange = this.handleChange.bind(this)
+        this.submitBill = this.submitBill.bind(this)
     }
 
     handleChange(event){
@@ -17,6 +18,17 @@ class AddBill extends React.Component{
         this.setState({
             [name]: value
         })
+    }
+
+    submitBill(){
+        if(this.state.billName.length > 0 && this.state.amount > 0){
+            this.state.addBill(this.state.billName, this.state.amount)
+            this.setState({
+                billName: "",
+                amount: ""
+            })
+        }
+        
     }
 
     render(){
@@ -41,7 +53,7 @@ class AddBill extends React.Component{
                         placeholder="Bill amount"
                     />
   
-                    <div onClick={()=>this.state.addBill(this.state.billName, this.state.amount)} className="AddBillButton">Submit</div>
+                    <div onClick={()=>this.submitBill()} className="AddBillButton">Submit</div>
                 </form>
             </div>
         )
