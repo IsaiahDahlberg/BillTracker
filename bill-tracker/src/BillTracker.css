@@ -3,19 +3,34 @@
     width: 70%;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: .20fr 1fr 2fr;
+    grid-template-rows: .20fr repeat(4, 1fr);
     grid-row-gap: 15px;
     grid-column-gap: 15px;
-    background-color: gainsboro;
+    background-color: rgb(233, 238, 223);
 }
 
 .AddBill{
    grid-column: 1/2;
 }
+
 .mainContent{
     background-color: orange;
   /*  grid-row: 3/4;
     grid-column: 1/2;*/
+}
+
+.pieChart{
+    border: solid;
+    border-color: red;
+    background-color: #ddd;
+}
+
+.barChart{
+    border: solid;
+    border-color: red;
+    background-color: #ddd;
+    grid-row: 3/4;
+    grid-column: 2/4;
 }
 
 .smallBox--1{
@@ -40,7 +55,7 @@
 
 .footer{
     background-color: #777;
-    grid-row: 4/ 5;
+    grid-row: 6/ -1;
     grid-column: 1/-1;
  
 }

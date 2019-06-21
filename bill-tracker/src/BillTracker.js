@@ -2,6 +2,8 @@ import React from "react"
 import AddBill from "./component/AddBill"
 import DisplayAllBills from "./component/DisplayAllBills.js"
 import BillBreakDown from "./component/BillBreakDown"
+import PieChart from "./chart/PieChart"
+import BarChart from "./chart/BarChart"
 import './BillTracker.css'
 
 class BillTracker extends React.Component{
@@ -73,6 +75,10 @@ class BillTracker extends React.Component{
 
                 <BillBreakDown bills={this.state.bills} focusBill={this.state.focusBill}/>
 
+                <PieChart bills={this.state.bills} />
+
+                <BarChart bills={this.state.bills} />
+
                 <div className="sidebar">sidebar</div>
 
                 <div className="mainContent">mainContent</div>
@@ -85,3 +91,4 @@ class BillTracker extends React.Component{
 }
 
 export default BillTracker
+
