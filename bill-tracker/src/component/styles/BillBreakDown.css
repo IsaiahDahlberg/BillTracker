@@ -1,11 +1,3 @@
-.BillBreakDown{
-    border: solid;
-    border-color: brown;
-    background-color: #ccc;
-    display:grid;
-    grid-row: repeat(3,1fr);
-}
-
 .bbBox{
     border: solid;
     margin: 2%;

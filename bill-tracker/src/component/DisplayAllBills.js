@@ -1,4 +1,5 @@
 import React from 'react'
+import CurrencyFormatter from "../Helper/Formatter"
 import './styles/DisplayAllBills.css'
 
 function DisplayAllBills(props) {
@@ -9,7 +10,7 @@ function DisplayAllBills(props) {
                 return (
                     <div key={index} style={{backgroundColor: bill.Color}}>
                         <button onClick={()=>props.changeFocus(index)}>Focus</button>
-                        {bill.Name}:  ${bill.Amount} 
+                        {bill.Name}:  {CurrencyFormatter.format(bill.Amount)} 
                         <button className="deleteButton" onClick={()=>props.deleteBill(index)}>X</button>
                     </div>
                 )

@@ -35,8 +35,7 @@ class AddBill extends React.Component{
         return(
             <div className="AddBill">
                 <p><b>Add Bill</b></p>
-                <form>
-                         
+                <div style={{padding: 5}}>
                     <input 
                         name="billName"
                         type="text"
@@ -52,9 +51,9 @@ class AddBill extends React.Component{
                         onChange={this.handleChange}
                         placeholder="Bill amount"
                     />
-  
-                    <div onClick={()=>this.submitBill()} className="AddBillButton">Submit</div>
-                </form>
+                </div>     
+                    
+                <button onClick={()=>this.submitBill()} className="SubmitButton">Submit</button>
             </div>
         )
     }

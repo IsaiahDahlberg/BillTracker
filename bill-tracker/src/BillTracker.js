@@ -2,15 +2,22 @@ import React from "react"
 import AddBill from "./component/AddBill"
 import DisplayAllBills from "./component/DisplayAllBills.js"
 import BillBreakDown from "./component/BillBreakDown"
+import SalaryBreakDown from "./component/SalaryBreakDown"
 import PieChart from "./chart/PieChart"
 import BarChart from "./chart/BarChart"
+import Income from "./component/Income"
 import './BillTracker.css'
+
+import CopyPastaBills from "./DevTools/CopyPastaBills"
 
 class BillTracker extends React.Component{
     constructor(){
         super()
         this.state = {
+            salary: null,
+            taxRate: null,
             bills: [],
+            income: null,
             focusBill: null
         }
 
@@ -18,6 +25,7 @@ class BillTracker extends React.Component{
         this.deleteBill = this.deleteBill.bind(this)
         this.changeFocus = this.changeFocus.bind(this)
         this.assignRandomColor = this.assignRandomColor.bind(this)
+        this.submitIncome = this.submitIncome.bind(this)
     }
 
     addBill = (name, value) =>{
@@ -30,6 +38,15 @@ class BillTracker extends React.Component{
             }
         })
     }
+
+    submitIncome = (salary, taxRate) =>{ 
+         this.setState({
+             salary: salary,
+             taxRate: taxRate
+         })
+     }
+ 
+
 
     deleteBill = (i) =>{
         this.setState(prevState=>{
@@ -68,23 +85,22 @@ class BillTracker extends React.Component{
         return(
             <div className="container">
                 <div className="header">Bill Tracker</div>
-            
+          
                 <AddBill addBill={this.addBill} /> 
 
                 <DisplayAllBills deleteBill={this.deleteBill} bills={this.state.bills} changeFocus={this.changeFocus} focusBill={this.state.focusBill}/>
 
                 <BillBreakDown bills={this.state.bills} focusBill={this.state.focusBill}/>
 
+                <SalaryBreakDown salary={this.state.salary} taxRate={this.state.taxRate} />
+
                 <PieChart bills={this.state.bills} />
 
                 <BarChart bills={this.state.bills} />
+            
+                <Income submitIncome={this.submitIncome} />
 
-                <div className="sidebar">sidebar</div>
-
-                <div className="mainContent">mainContent</div>
-
-                <div className="footer">footer</div>
-                
+                <CopyPastaBills addBill={this.addBill} submitSalary={this.submitIncome}/>
             </div>
         )
     }
