@@ -10,7 +10,7 @@ const bills = [{name:"Rent", amount:1500},
                {name:"Phone",amount:375},
                {name:"Car Payment", amount:740},
                {name:"Yacht Payment", amount:1100}
-            ]
+              ]
 function CopyPastaBills (props){
 
     return (

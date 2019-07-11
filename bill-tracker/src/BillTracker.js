@@ -1,14 +1,14 @@
 import React from "react"
 import AddBill from "./component/AddBill"
-import DisplayAllBills from "./component/DisplayAllBills.js"
-import BillBreakDown from "./component/BillBreakDown"
-import SalaryBreakDown from "./component/SalaryBreakDown"
 import PieChart from "./chart/PieChart"
 import BarChart from "./chart/BarChart"
 import Income from "./component/Income"
+import DisplayStats from "./component/DisplayStats/DisplayStats"
 import './BillTracker.css'
 
 import CopyPastaBills from "./DevTools/CopyPastaBills"
+
+
 
 class BillTracker extends React.Component{
     constructor(){
@@ -18,12 +18,11 @@ class BillTracker extends React.Component{
             taxRate: null,
             bills: [],
             income: null,
-            focusBill: null
+       
         }
 
         this.addBill = this.addBill.bind(this)
         this.deleteBill = this.deleteBill.bind(this)
-        this.changeFocus = this.changeFocus.bind(this)
         this.assignRandomColor = this.assignRandomColor.bind(this)
         this.submitIncome = this.submitIncome.bind(this)
     }
@@ -58,13 +57,7 @@ class BillTracker extends React.Component{
                 focusBill: null
             }
         })
-    }   
-
-    changeFocus = (i) =>{
-        this.setState({
-            focusBill: i
-        })    
-    }
+    }  
 
     assignRandomColor(){
         var color
@@ -88,15 +81,14 @@ class BillTracker extends React.Component{
           
                 <AddBill addBill={this.addBill} /> 
 
-                <DisplayAllBills deleteBill={this.deleteBill} bills={this.state.bills} changeFocus={this.changeFocus} focusBill={this.state.focusBill}/>
-
-                <BillBreakDown bills={this.state.bills} focusBill={this.state.focusBill}/>
-
-                <SalaryBreakDown salary={this.state.salary} taxRate={this.state.taxRate} />
-
                 <PieChart bills={this.state.bills} />
 
                 <BarChart bills={this.state.bills} />
+
+                <DisplayStats deleteBill={this.deleteBill}
+                              bills={this.state.bills}
+                              salary={this.state.salary}
+                              taxRate={this.state.taxRate} />
             
                 <Income submitIncome={this.submitIncome} />
 
